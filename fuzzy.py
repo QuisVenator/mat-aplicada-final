@@ -1,4 +1,4 @@
-from shapely.geometry import Polygon, MultiPolygon
+from shapely.geometry import Polygon
 from shapely.ops import unary_union
 
 class Regla:
@@ -164,9 +164,9 @@ def main():
     res = [regla.evaluar(pertenencias) for regla in reglas]
     res_poly = [sets["salida"][r[0]].poligono(r[1]) for r in res if r[1]]
     fuzzy_result = unary_union(res_poly)
-    print(fuzzy_result)
     scalar_result = fuzzy_result.centroid.x
-    print("Resultado: ", scalar_result)
+    
+    print(f"Resultado: w={scalar_result}")
 
 if __name__ == "__main__":
     main()
